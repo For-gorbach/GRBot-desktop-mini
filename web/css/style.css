@@ -1,0 +1,24 @@
+body {
+    background: linear-gradient(96deg, #a996da, #ff867a, #9bd029);
+/*    background: linear-gradient(90deg, #566925, #007985, #642fd6);*/
+}
+
+.test {
+    font-size: 60px;
+}
+
+.input {
+    font-size: 30px;
+    color: #fff;
+    width: 550px;
+    background: linear-gradient(90deg, #342326, #580413, #540021, #580413, #342326)
+}
+
+#submit {
+    font-size: 30px;
+    background: #0f0;
+}
+#submit:hover {
+    color: #0fa;
+    background: #50f;
+}
