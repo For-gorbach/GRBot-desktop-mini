@@ -8,7 +8,7 @@ from random import randint  # импорт функции генерирован
 def text(text, chats, api_id, api_hash, time):  # функция
     groups_id = eval("["+chats+"]")  # превращаем переданную информацию в список а при помощи eval ``убираем`` ковычки превращая текст в список
 
-    def join_in_chat(id):  # функция для входа в чат
+    def join_in_chat(app, id):  # функция для входа в чат
         try:  # проверка на наличие ошибок
             app.join_chat(app.get_chat(id)["invite_link"])  # входим в чат по ссылке полученной с помощью id
             print(f"Вы вошли в чат с id {id} ({app.get_chat(id)['title']})")  # пишет в какой чат мы зашли
@@ -20,7 +20,7 @@ def text(text, chats, api_id, api_hash, time):  # функция
     with app:  # начинаем работу с юзером
         while True:
             for id in groups_id:  # проходим по списку id групп
-                join_in_chat(int(id))  # запуск функции для входа в чат
+                join_in_chat(app, int(id))  # запуск функции для входа в чат
                 try:  # отлавливание ошибок
                     print(f"Сообщение отправлено в чат {id} ({app.get_chat(id)['title']})")  # пишем в какой чат мы зашли
                     app.send_message(int(id), text)  # отправляем сообщение
