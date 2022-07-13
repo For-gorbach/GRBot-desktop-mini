@@ -6,6 +6,7 @@ from random import randint  # импорт функции генерирован
 
 print("Не закрывайте это окно, это часть приложения SpamBot")  # просто вывод текста
 
+
 @eel.expose  # подключаем функцию к модулю eel
 def text(text, chats, api_id, api_hash, time):  # функция
     chats = chats.replace("\n", "")  # удаляем все пропуски строк
@@ -22,7 +23,8 @@ def text(text, chats, api_id, api_hash, time):  # функция
         except errors.exceptions.flood_420.FloodWait:  # если произошла ошибка от того что вы есть в чате то
             pass  # null функция, что бы ничего не происходило
 
-    app = Client("my_account", api_id=api_id, api_hash=api_hash)  # записываем в переменную app то что юзербот будет выполнять все действия от имени юзера, а так же передаем api_id и api_hash которые мы объявили в файле settings.py
+    app = Client("my_account", api_id=api_id,
+                 api_hash=api_hash)  # записываем в переменную app то что юзербот будет выполнять все действия от имени юзера, а так же передаем api_id и api_hash которые мы объявили в файле settings.py
 
     with app:  # начинаем работу с юзером
         for link in groups_links:  # проходим по списку ссылок групп
@@ -38,10 +40,13 @@ def text(text, chats, api_id, api_hash, time):  # функция
             print(f"\nЗасыпание на {int(time)} секунд!\n")  # пишем на сколько сек засыпать программе
             sleep(int(time))  # засыпание программы
 
+
 eel.init("web")  # инициализируем проект в папке web
 try:
-    eel.start("index.html", size=(1280, 800), port=randint(0, 9999))  # запускаем index.html в окне с размером 1000 на 800
+    eel.start("index.html", size=(1280, 800),
+              port=randint(0, 9999))  # запускаем index.html в окне с размером 1000 на 800
 except FileNotFoundError:
     print("Пожалуйста, проверьте наличие chrome на устройстве!")
     input("Нажмите Enter для закрытия программы!")
+
 exit()  # закрытие консоли при выключении программы
