@@ -33,7 +33,10 @@ def text(text, chats, api_id, api_hash, time):  # функция
             for link in groups_links:  # проходим по списку ссылок групп
                 try:  # отлавливание ошибок
                     print(f"Сообщение отправлено в чат \"{app.get_chat(link).title}\"!")  # пишем в какой чат мы зашли
-                    app.send_message(app.get_chat(link).id, text)  # отправляем сообщение
+                    id = app.get_chat(link).id  # записываем id чата в соответствующую переменную
+                    if id > 0:  # если id болше 0 то
+                        id = int("-100"+str(id))  # прибавляем в начало id -100
+                    app.send_message(id, text)  # отправляем сообщение
                 except Exception as ex:  # обрабатываем ошибку
                     print(f"Упс, ТУТ ошибка {ex}")  # пишем ошибку
 
