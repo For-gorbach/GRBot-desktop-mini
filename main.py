@@ -22,6 +22,8 @@ def text(text, chats, api_id, api_hash, time):  # функция
             print(f"Вы вошли в чат {app.get_chat(link).title}")  # пишет в какой чат мы зашли
         except errors.exceptions.flood_420.FloodWait:  # если произошла ошибка от того что вы есть в чате то
             pass  # null функция, что бы ничего не происходило
+        except:  # если была ошибка то
+            print("При подключении произошла ошибка (или вы уже были в чате)")  # пишем о ошибке
 
     app = Client("my_account", api_id=api_id,
                  api_hash=api_hash)  # записываем в переменную app то что юзербот будет выполнять все действия от имени юзера, а так же передаем api_id и api_hash которые мы объявили в файле settings.py
@@ -32,11 +34,11 @@ def text(text, chats, api_id, api_hash, time):  # функция
         while True:
             for link in groups_links:  # проходим по списку ссылок групп
                 try:  # отлавливание ошибок
-                    print(f"Сообщение отправлено в чат \"{app.get_chat(link).title}\"!")  # пишем в какой чат мы зашли
                     id = app.get_chat(link).id  # записываем id чата в соответствующую переменную
                     if id > 0:  # если id болше 0 то
                         id = int("-100"+str(id))  # прибавляем в начало id -100
                     app.send_message(id, text)  # отправляем сообщение
+                    print(f"Сообщение отправлено в чат \"{app.get_chat(link).title}\"!")  # пишем в какой чат мы отправляем сообщение
                 except Exception as ex:  # обрабатываем ошибку
                     print(f"Упс, ТУТ ошибка {ex}")  # пишем ошибку
 
