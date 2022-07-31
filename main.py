@@ -18,7 +18,7 @@ def text(text, chats, api_id, api_hash, time):  # функция
 
     def join_in_chat(app, link):  # функция для входа в чат
         try:  # проверка на наличие ошибок
-            app.join_chat(link)  # входим в чат по ссылке полученной с помощью ссылки
+            await app.join_chat(link)  # входим в чат по ссылке полученной с помощью ссылки
             print(f"Вы вошли в чат {app.get_chat(link).title}")  # пишет в какой чат мы зашли
         except errors.exceptions.flood_420.FloodWait:  # если произошла ошибка от того что вы есть в чате то
             pass  # null функция, что бы ничего не происходило
